@@ -1,7 +1,7 @@
 agar-io-client-java
 ===================
 
-A port of [https://github.com/szabl/AgarIoByKfaziClient](https://github.com/szabl/AgarIoByKfaziClient)
+A port of [https://github.com/szabl/AgarIoByKfaziClient](https://github.com/szabl/AgarIoByKfaziClient) for [FDD Conference](http://futuredevday.pl).
 
 ## Usage
 ```bash
