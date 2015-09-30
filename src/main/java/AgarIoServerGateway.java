@@ -42,9 +42,10 @@ public class AgarIoServerGateway {
 
     private String executeCommand(Object dto) {
         String commandJson = JsonWrapper.toJson(dto);
+        System.out.println("AgarIo request:" + commandJson); // debug
         writeLine(commandJson);
         String responseJson = readLine();
-        System.out.println(responseJson);
+        System.out.println("AgarIo response:" + responseJson); // debug
         return responseJson;
     }
 

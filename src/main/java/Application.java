@@ -24,7 +24,7 @@ public class Application {
         String password = checkNotNull(config.getString("agar-io.password"));
         String hostname = checkNotNull(config.getString("agar-io.hostname"));
         int port = checkNotNull(config.getInt("agar-io.port"));
-        checkArgument(isNullOrEmpty(playerName + password), "PlayerName and password must be set in App.config to connect to server.");
+        checkArgument(!isNullOrEmpty(playerName + password), "player-Name and password must be set in application.conf to connect to server.");
 
         Socket tcpSocket = new Socket(hostname, port);
 

@@ -1,20 +1,7 @@
 package contract;
 
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-
 import java.util.UUID;
 
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
-@JsonSubTypes({
-        @JsonSubTypes.Type(value = PlayerCommandDto.SplitPlayerCommandDto.class, name = "Split"),
-        @JsonSubTypes.Type(value = PlayerCommandDto.EjectMassPlayerCommandDto.class, name = "EjectMass"),
-        @JsonSubTypes.Type(value = PlayerCommandDto.GetViewPlayerCommandDto.class, name = "GetView"),
-        @JsonSubTypes.Type(value = PlayerCommandDto.JoinPlayerCommandDto.class, name = "Join"),
-        @JsonSubTypes.Type(value = PlayerCommandDto.MovePlayerCommandDto.class, name = "Move")
-})
-@JsonSerialize
 public class PlayerCommandDto {
 
     protected PlayerCommandDto(PlayerCommandType type) {

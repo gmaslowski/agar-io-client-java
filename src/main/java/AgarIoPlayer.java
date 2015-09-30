@@ -1,7 +1,4 @@
-import contract.BlobDto;
-import contract.BlobType;
-import contract.CommandErrorCode;
-import contract.GetViewResponseDto;
+import contract.*;
 
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -28,9 +25,9 @@ public class AgarIoPlayer {
 
             BlobDto myBlob = newArrayList(getViewResponseDto.blobs)
                     .stream()
-                    .filter(blob -> blob.name.equals(playerName))
+                    .filter(blob -> playerName.equals(blob.name))
                     .findFirst()
-                    .orElseGet(() -> new BlobDto());
+                    .orElseGet(() -> defaultBlobDto());
 
             double destinationX = ThreadLocalRandom.current().nextDouble(-255, 256);
             double destinationY = ThreadLocalRandom.current().nextDouble(-255, 256);
@@ -40,7 +37,7 @@ public class AgarIoPlayer {
                     .filter(blob -> blob.type == BlobType.Food)
                     .sorted((b1, b2) -> blobCompare(b1, b2, myBlob))
                     .findFirst()
-                    .orElseGet(() -> new BlobDto());
+                    .orElseGet(() -> defaultBlobDto());
 
             if (closestFood != null) {
                 destinationX = closestFood.position.x - myBlob.position.x;
@@ -49,6 +46,12 @@ public class AgarIoPlayer {
 
             serverGateway.move(destinationX * 1000, destinationY * 1000);
         }
+    }
+
+    private BlobDto defaultBlobDto() {
+        BlobDto blobDto = new BlobDto();
+        blobDto.position = new VectorDto();
+        return blobDto;
     }
 
     private int blobCompare(BlobDto b1, BlobDto b2, BlobDto myBlob) {
