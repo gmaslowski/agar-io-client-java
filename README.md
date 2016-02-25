@@ -5,7 +5,7 @@ A port of [https://github.com/szabl/AgarIoByKfaziClient](https://github.com/szab
 
 ## Usage
 ```bash
-gradle run
+./gradlew run
 ```
 
 Or it can be started from IDE. Just navigate to ```Application``` class and start the ```main``` method.
